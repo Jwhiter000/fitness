@@ -57,10 +57,12 @@ nav a:hover:after {width:100%;}
 .menu-panels {
   display:flex;
   overflow-x:auto;
-  gap:20px;
-  padding:120px 50px 60px 50px;
+  overflow-y:visible;
+  gap:30px;
+  padding:140px 50px 80px 50px;
   scroll-snap-type:x mandatory;
 }
+
 
 .menu-panels::-webkit-scrollbar {display:none;}
 
@@ -75,9 +77,9 @@ nav a:hover:after {width:100%;}
 }
 
 .panel:hover {
-  transform:scale(1.05) rotate(-1deg);
-  box-shadow:0 20px 40px rgba(0,255,204,0.4);
+  transform: scale(1.03);
 }
+
 
 .panel img {
   width:100%;
@@ -313,3 +315,4 @@ footer .copyright{
 
 </body>
 </html>
+
