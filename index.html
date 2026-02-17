@@ -4,43 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FoodPulse — Доставка Екстрім Смаку</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat', sans-serif;}
-body {background:#0f0f1f; color:#fff; overflow-x:hidden;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
+}
 
-/* NAVIGATION */
-nav {
+body{
+  background:#0f0f1f;
+  color:#fff;
+  width:100%;
+  overflow-x:hidden;
+}
+
+/* ================= NAVIGATION ================= */
+
+nav{
   position:fixed;
   width:100%;
   top:0;
   left:0;
-  padding:20px 50px;
+  padding:20px 60px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(15,15,31,0.85);
+  background:rgba(15,15,31,0.9);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
 
-nav .logo {
-  font-family:'Orbitron', sans-serif;
+.logo{
+  font-family:'Orbitron',sans-serif;
   font-size:1.8em;
   color:#00ffcc;
   letter-spacing:2px;
 }
 
-nav a {
+nav .links{
+  display:flex;
+  gap:30px;
+}
+
+nav a{
   color:#fff;
   text-decoration:none;
-  margin-left:30px;
   font-weight:600;
   position:relative;
 }
 
-nav a:after {
+nav a:after{
   content:'';
   position:absolute;
   width:0;
@@ -51,89 +68,98 @@ nav a:after {
   transition:0.3s;
 }
 
-nav a:hover:after {width:100%;}
-
-/* MENU PANELS */
-.menu-panels {
-  display:flex;
-  overflow-x:auto;
-  gap:20px;
-  padding:120px 50px 60px 50px;
-  scroll-snap-type:x mandatory;
+nav a:hover:after{
+  width:100%;
 }
 
-.menu-panels::-webkit-scrollbar {display:none;}
+/* ================= MENU ================= */
 
-.panel {
-  flex:0 0 320px;
+.menu-panels{
+  padding:140px 60px 80px 60px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+}
+
+.panel{
   background:#1a1a2e;
   border-radius:25px;
-  padding:30px;
-  scroll-snap-align:start;
+  padding:25px;
   transition:0.4s;
   cursor:pointer;
 }
 
-.panel:hover {
-  transform:scale(1.05) rotate(-1deg);
-  box-shadow:0 20px 40px rgba(0,255,204,0.4);
+.panel:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,255,204,0.3);
 }
 
-.panel img {
+.panel img{
   width:100%;
   border-radius:15px;
   margin-bottom:15px;
+  height:200px;
+  object-fit:cover;
 }
 
-.panel h3 {color:#00ffcc; margin-bottom:10px; font-size:1.4em;}
-.panel p {color:#ccc; font-size:0.95em; line-height:1.4;}
+.panel h3{
+  color:#00ffcc;
+  margin-bottom:10px;
+  font-size:1.3em;
+}
 
-/* TESTIMONIALS */
-.testimonial-wrapper {
-  padding:100px 0;
-  overflow:hidden;
+.panel p{
+  color:#ccc;
+  font-size:0.95em;
+  line-height:1.4;
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonial-wrapper{
+  padding:100px 60px;
   background:linear-gradient(120deg,#1a1a2e,#0f0f1f);
 }
 
-.testimonial-track {
-  display:flex;
-  gap:50px;
-  animation:scrollLeft 20s linear infinite;
+.testimonial-track{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
 }
 
-.testimonial {
-  min-width:300px;
+.testimonial{
   padding:30px;
   background:#11112b;
   border-radius:20px;
   text-align:center;
-  flex-shrink:0;
 }
 
-.testimonial .quote {
+.testimonial .quote{
   font-style:italic;
   color:#00ffcc;
   margin-bottom:15px;
 }
 
-.testimonial .author {font-weight:700;}
+.testimonial .author{
+  font-weight:700;
+}
 
-/* CTA */
-.cta-block {
+/* ================= CTA ================= */
+
+.cta-block{
   background:#00ffcc;
   color:#0f0f1f;
-  padding:80px 50px;
+  padding:100px 60px;
   text-align:center;
-  clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
 }
 
-.cta-block h2 {
+.cta-block h2{
   font-size:3em;
   margin-bottom:30px;
-  font-family:'Orbitron', sans-serif;
+  font-family:'Orbitron',sans-serif;
 }
 
-.cta-block a {
+.cta-block a{
   display:inline-block;
   padding:20px 60px;
   background:#1a1a2e;
@@ -144,102 +170,87 @@ nav a:hover:after {width:100%;}
   transition:0.3s;
 }
 
-.cta-block a:hover {
+.cta-block a:hover{
   transform:scale(1.05);
   box-shadow:0 0 25px #00ffcc;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+
 footer{
   background:#0d1b2a;
-  padding:30px 50px;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:15px;
+  padding:40px 60px;
+  text-align:center;
   font-size:14px;
   color:#ccc;
 }
 
 footer .logo{
-  font-family:'Orbitron',sans-serif;
-  font-size:1.5em;
+  margin-bottom:15px;
   color:#a0ff4d;
 }
 
-footer .copyright{
-  width:100%;
-  text-align:center;
-  margin-top:15px;
-  font-size:0.8em;
-  color:#777;
-}
+/* ================= TABLET ================= */
 
-/* ========================= */
-/* 🔥 TABLET FIX */
-/* ========================= */
 @media(max-width:1024px){
 
-  .panel{
-    flex:0 0 70%;
+  nav{
+    padding:20px 30px;
+  }
+
+  .menu-panels{
+    grid-template-columns:repeat(2,1fr);
+    padding:130px 30px 60px 30px;
+  }
+
+  .testimonial-track{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .cta-block{
+    padding:80px 30px;
+  }
+
+  .cta-block h2{
+    font-size:2.2em;
   }
 
 }
 
-/* ========================= */
-/* 🔥 PHONE FIX */
-/* ========================= */
+/* ================= MOBILE ================= */
+
 @media(max-width:768px){
 
   nav{
-    padding:15px 20px;
     flex-direction:column;
-    gap:10px;
+    gap:15px;
+    padding:20px;
   }
 
-  nav div{
-    display:flex;
-    gap:20px;
+  .links{
     flex-wrap:wrap;
     justify-content:center;
   }
 
   .menu-panels{
-    flex-direction:column;
-    overflow-x:visible;
-    padding:120px 20px 40px 20px;
-  }
-
-  .panel{
-    flex:1 1 auto;
-    width:100%;
+    grid-template-columns:1fr;
+    padding:130px 20px 50px 20px;
   }
 
   .testimonial-track{
-    animation:none;
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .testimonial{
-    min-width:auto;
-    width:90%;
+    grid-template-columns:1fr;
   }
 
   .cta-block{
-    clip-path:none;
-    padding:60px 20px;
+    padding:70px 20px;
   }
 
   .cta-block h2{
-    font-size:2em;
+    font-size:1.8em;
   }
 
   footer{
-    padding:25px 20px;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
+    padding:30px 20px;
   }
 
 }
@@ -249,7 +260,7 @@ footer .copyright{
 
 <nav>
   <div class="logo">FoodPulse</div>
-  <div>
+  <div class="links">
     <a href="#menu">Меню</a>
     <a href="#testimonials">Відгуки</a>
     <a href="#order">Контакти</a>
@@ -288,10 +299,12 @@ footer .copyright{
       <p class="quote">"Замовляю щотижня — швидко та смачно!"</p>
       <p class="author">— Олена П.</p>
     </div>
+
     <div class="testimonial">
       <p class="quote">"Сім'я в захваті від доставки! Рекомендую всім."</p>
       <p class="author">— Андрій К.</p>
     </div>
+
     <div class="testimonial">
       <p class="quote">"Найкраща їжа для молодіжних тусовок!"</p>
       <p class="author">— Марія С.</p>
@@ -306,9 +319,7 @@ footer .copyright{
 
 <footer>
   <div class="logo">FoodPulse</div>
-  <div class="copyright">
-    &copy; 2025 FoodPulse. Всі права захищені.
-  </div>
+  <div>&copy; 2025 FoodPulse. Всі права захищені.</div>
 </footer>
 
 </body>
