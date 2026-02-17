@@ -3,299 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POWERGYM</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-
+<title>Glow Studio — Інтерактивна краса</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;background:#0b0c10;color:#fff;overflow-x:hidden;scroll-behavior:smooth;}
+
+/* NAVIGATION */
+nav{
+  position:fixed;top:0;width:100%;padding:20px 50px;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:1000;background:rgba(11,12,16,0.8);backdrop-filter:blur(8px);
+}
+nav .logo{font-family:'Orbitron',sans-serif;font-size:1.8em;color:#ff66cc;}
+nav a{
+  color:#fff;text-decoration:none;margin-left:30px;font-weight:600;position:relative;
+}
+nav a::after{
+  content:'';position:absolute;width:0;height:2px;background:#ff66cc;left:0;bottom:-4px;transition:0.3s;
+}
+nav a:hover::after{width:100%;}
+
+/* FULLSCREEN SECTIONS */
+.section {
+  height: auto; /* вместо 100vh */
+  min-height: 100vh; /* если нужно чтобы интро занимало экран */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 10%; /* можно сверху/снизу увеличить */
+  text-align: center;
 }
 
-body{
-    background:#0a0a0a;
-    color:white;
-    overflow-x:hidden;
+.section h1{
+  font-family:'Orbitron',sans-serif;font-size:4em;margin-bottom:20px;color:#ff66cc;
+}
+.section p{
+  font-size:1.2em;color:#ccc;max-width:700px;margin-bottom:30px;
+  line-height:1.5;
 }
 
-/* SECTIONS */
-section{
-    padding:120px 10%;
+/* DYNAMIC BACKGROUNDS */
+#intro{background:linear-gradient(120deg,#0b0c10,#2b0a2f);}
+#services {
+  background: linear-gradient(260deg, #3f0f3f, #0b0c10);
+  justify-content: flex-start; /* блоки сверху */
+  scroll-margin-top: 80px;     /* nav высотой 80px */
 }
 
-h1,h2,h3{
-    font-weight:900;
+
+
+/* INTERACTIVE HOVER EFFECTS */
+.section h1 span{
+  display:inline-block;transition:transform 0.3s;
+}
+.section h1 span:hover{transform:scale(1.2) rotate(-5deg);color:#ffccff;}
+
+/* SCROLL INDICATOR */
+.scroll-down{
+  position:absolute;bottom:20px;font-size:0.9em;color:#ff66cc;animation:updown 1.5s infinite;
+}
+@keyframes updown{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(10px);}
 }
 
-.neon{
-    color:#b6ff00;
+/* SERVICES GRID */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;margin-top:40px;
 }
+.service-card{
+  background:rgba(255,102,204,0.1);
+  backdrop-filter:blur(10px);
+  padding:30px;border-radius:20px;transition:transform 0.3s;
+}
+.service-card:hover{transform:scale(1.05);}
+.service-card h3{color:#ff66cc;margin-bottom:15px;font-size:1.3em;}
+.service-card p{color:#ccc;font-size:0.95em;line-height:1.4;}
 
-/* BUTTON */
-.btn{
-    display:inline-flex;
-    width:300px;
-    justify-content:center;
-    align-items:center;
-    padding:18px 0;
-    background:#b6ff00;
-    color:#000;
-    font-weight:800;
-    border-radius:40px;
-    text-decoration:none;
-    transition:.3s;
-    box-shadow:0 0 25px rgba(182,255,0,0.6);
-}
-.btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 40px rgba(182,255,0,1);
-}
-
-/* HERO */
-.hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
-    url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1400&q=80') center/cover;
-}
-.hero h1{
-    font-size:90px;
-    line-height:1;
-}
-.hero p{
-    margin:30px 0;
-    max-width:500px;
-    font-size:20px;
-    color:#ccc;
-}
-
-/* STATS */
-.stats{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:40px;
-    text-align:center;
-}
-.stat h2{
-    font-size:60px;
-    color:#b6ff00;
-}
-.stat p{
-    color:#aaa;
-}
-
-/* PROGRAMS */
-.programs{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:40px;
-}
-.card{
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
-    padding:40px;
-    border-radius:20px;
-    transition:.4s;
-    border:1px solid rgba(255,255,255,0.08);
-}
-.card:hover{
-    transform:translateY(-10px);
-    border:1px solid #b6ff00;
-    box-shadow:0 0 30px rgba(182,255,0,.3);
-}
-.card h3{
-    margin-bottom:15px;
-}
-
-/* CTA */
-.cta{
-    text-align:center;
-    background:linear-gradient(90deg,#0a0a0a,#121212);
-}
-.cta h2{
-    font-size:50px;
-    margin-bottom:30px;
-}
-
-/* SOCIAL LINKS */
-.social a{
-    color:#b6ff00;
-    text-decoration:none;
-    margin-left:15px;
-    font-weight:600;
-    transition:.3s;
-}
-.social a:hover{
-    color:#fff;
-    text-shadow:0 0 10px #b6ff00;
-}
-
-/* FOOTER */
+/* FOOTER MINIMAL */
 footer{
-    padding:60px 10%;
-    border-top:1px solid rgba(255,255,255,0.08);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:20px;
-    font-size:14px;
-    color:#777;
+  padding:40px 50px;text-align:center;font-size:0.9em;color:#777;background:#0b0c10;
 }
+footer a{color:#ff66cc;text-decoration:none;transition:0.3s;}
+footer a:hover{opacity:0.7;}
 
 /* RESPONSIVE */
-@media (max-width:1024px){
-    section{
-        padding:80px 8%;
-    }
-    .programs{
-        gap:30px;
-    }
-}
-
 @media(max-width:768px){
-    .hero{
-        height:auto;
-        padding:60px 5%;
-    }
-    .hero h1{
-        font-size:50px;
-        line-height:1.1;
-    }
-    .hero p{
-        font-size:18px;
-        max-width:100%;
-    }
-
-    .stats{
-        flex-direction:column;
-        gap:30px;
-    }
-    .stat h2{
-        font-size:40px;
-    }
-    .stat p{
-        font-size:16px;
-    }
-
-    .programs{
-        grid-template-columns:1fr;
-        gap:25px;
-    }
-    .card{
-        padding:25px;
-    }
-
-    .cta h2{
-        font-size:32px;
-        margin-bottom:20px;
-    }
-    .btn{
-        width:100%;
-        max-width:300px;
-        padding:16px 0;
-    }
-
-    footer{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-    }
-    footer .social{
-        margin-top:15px;
-    }
+  .section h1{font-size:2.5em;}
+  .services-grid{gap:20px;}
 }
 
-@media (max-width:480px){
-    .hero h1{
-        font-size:36px;
-    }
-    .hero p{
-        font-size:16px;
-    }
-    .cta h2{
-        font-size:28px;
-    }
-    .btn{
-        max-width:100%;
-        font-size:16px;
-        padding:14px 0;
-    }
-    section{
-        padding:50px 5%;
-    }
+/* CTA INLINE */
+.section a.cta{
+  padding:18px 50px;background:#ff66cc;color:#fff;font-weight:700;border-radius:35px;text-decoration:none;
+  transition:0.3s;margin-top:15px;
+}
+.section a.cta:hover{transform:scale(1.05);box-shadow:0 0 20px #ff66cc;}
+
+/* Для контактной секции */
+#contact {
+  background:linear-gradient(90deg,#3f0f3f,#0b0c10);
+  height: auto; /* по содержимому */
+  min-height: 50vh; /* минимум 50% экрана, можно менять */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction:column;
+  padding:60px 10%; /* уменьшаем padding сверху/снизу */
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-    <h1>BUILD<br><span class="neon">POWER</span></h1>
-    <p>Сучасна мережа фітнес-залів з персональними тренуваннями. Результат. Дисципліна. Енергія.</p>
-    <a href="#" class="btn">Почати трансформацію</a>
+<!-- NAV -->
+<nav>
+  <div class="logo">Glow Studio</div>
+   <div>
+    <a href="#intro">Про нас</a>
+    <a href="#services">Послуги</a>
+    <a href="#experience">Відгуки</a>
+    <a href="#contact">Контакти</a>
+  </div>
+</nav>
+
+<!-- INTRO -->
+<section id="intro" class="section">
+  <h1>Краса <span>в Дії</span></h1>
+  <p>Glow Studio — преміальний салон краси для молоді та сімей. Вишуканий стиль, професіоналізм і індивідуальний підхід у кожній процедурі.</p>
+  <div class="scroll-down">Скрольте вниз ↓</div>
 </section>
 
-<!-- STATS -->
-<section>
-    <div class="stats">
-        <div class="stat">
-            <h2>12+</h2>
-            <p>Залів по країні</p>
-        </div>
-        <div class="stat">
-            <h2>8000+</h2>
-            <p>Активних клієнтів</p>
-        </div>
-        <div class="stat">
-            <h2>40+</h2>
-            <p>Професійних тренерів</p>
-        </div>
+<!-- SERVICES -->
+<section id="services" class="section">
+  <h1>Наші <span>Послуги</span></h1>
+  <p>Від манікюру та педикюру до спа-процедур і професійного макіяжу — ми створюємо ваш ідеальний образ.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Манікюр & Педикюр</h3>
+      <p>Деталі, стиль та довготривалий результат для вашого комфорту.</p>
     </div>
-</section>
-
-<!-- PROGRAMS -->
-<section>
-    <h2 style="font-size:50px;margin-bottom:60px;">Наші <span class="neon">Програми</span></h2>
-    <div class="programs">
-        <div class="card">
-            <h3>Персональні тренування</h3>
-            <p>Індивідуальна програма та повний контроль результату.</p>
-        </div>
-        <div class="card">
-            <h3>Силовий тренінг</h3>
-            <p>Професійне обладнання та програми для набору маси.</p>
-        </div>
-        <div class="card">
-            <h3>Функціональні тренування</h3>
-            <p>Витривалість, швидкість, мобільність.</p>
-        </div>
-        <div class="card">
-            <h3>Кардіо зона</h3>
-            <p>Сучасні бігові доріжки та fat-burn програми.</p>
-        </div>
+    <div class="service-card">
+      <h3>Спа-процедури</h3>
+      <p>Релакс, відновлення та енергія в кожній процедурі.</p>
     </div>
+    <div class="service-card">
+      <h3>Макіяж</h3>
+      <p>Вишуканий образ для подій будь-якого масштабу та настрою.</p>
+    </div>
+    <div class="service-card">
+      <h3>Індивідуальні консультації</h3>
+      <p>Наші фахівці підберуть персональний догляд та стиль для вас.</p>
+    </div>
+  </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-    <h2>Твоя трансформація починається сьогодні</h2>
-    <a href="#" class="btn">Отримати пробне тренування</a>
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h1>Зв’язатися з нами</h1>
+  <p>Напишіть або зателефонуйте, щоб забронювати візит і отримати персональну консультацію.</p>
+  <a href="mailto:info@glowstudio.ua" class="cta">Написати нам</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <div>© 2025 POWERGYM</div>
-    <div class="social">
-        <a href="#" target="_blank">Instagram</a>
-        <a href="#" target="_blank">TikTok</a>
-        <a href="#" target="_blank">Facebook</a>
-    </div>
+  &copy; 2025 Glow Studio | <a href="#">Політика конфіденційності</a>
 </footer>
 
 </body>
