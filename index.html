@@ -21,6 +21,7 @@ body{
     overflow-x:hidden;
 }
 
+/* SECTIONS */
 section{
     padding:120px 10%;
 }
@@ -33,12 +34,13 @@ h1,h2,h3{
     color:#b6ff00;
 }
 
+/* BUTTON */
 .btn{
-    display:inline-flex;      /* лучше чем inline-block */
-    width:300px;              /* фиксированная ширина */
-    justify-content:center;   /* центрируем текст */
+    display:inline-flex;
+    width:300px;
+    justify-content:center;
     align-items:center;
-    padding:18px 0;           /* убираем боковой padding */
+    padding:18px 0;
     background:#b6ff00;
     color:#000;
     font-weight:800;
@@ -47,15 +49,12 @@ h1,h2,h3{
     transition:.3s;
     box-shadow:0 0 25px rgba(182,255,0,0.6);
 }
-
-
 .btn:hover{
     transform:scale(1.05);
     box-shadow:0 0 40px rgba(182,255,0,1);
 }
 
 /* HERO */
-
 .hero{
     height:100vh;
     display:flex;
@@ -64,12 +63,10 @@ h1,h2,h3{
     background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
     url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1400&q=80') center/cover;
 }
-
 .hero h1{
     font-size:90px;
     line-height:1;
 }
-
 .hero p{
     margin:30px 0;
     max-width:500px;
@@ -78,7 +75,6 @@ h1,h2,h3{
 }
 
 /* STATS */
-
 .stats{
     display:flex;
     justify-content:space-between;
@@ -86,24 +82,20 @@ h1,h2,h3{
     gap:40px;
     text-align:center;
 }
-
 .stat h2{
     font-size:60px;
     color:#b6ff00;
 }
-
 .stat p{
     color:#aaa;
 }
 
 /* PROGRAMS */
-
 .programs{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:40px;
 }
-
 .card{
     background:rgba(255,255,255,0.05);
     backdrop-filter:blur(10px);
@@ -112,44 +104,39 @@ h1,h2,h3{
     transition:.4s;
     border:1px solid rgba(255,255,255,0.08);
 }
-
 .card:hover{
     transform:translateY(-10px);
     border:1px solid #b6ff00;
     box-shadow:0 0 30px rgba(182,255,0,.3);
 }
-
 .card h3{
     margin-bottom:15px;
 }
 
 /* CTA */
-
 .cta{
     text-align:center;
     background:linear-gradient(90deg,#0a0a0a,#121212);
 }
-
 .cta h2{
     font-size:50px;
     margin-bottom:30px;
 }
 
+/* SOCIAL LINKS */
 .social a{
-    color:#b6ff00;              /* неоновый цвет */
+    color:#b6ff00;
     text-decoration:none;
     margin-left:15px;
     font-weight:600;
     transition:.3s;
 }
-
 .social a:hover{
     color:#fff;
     text-shadow:0 0 10px #b6ff00;
 }
 
 /* FOOTER */
-
 footer{
     padding:60px 10%;
     border-top:1px solid rgba(255,255,255,0.08);
@@ -161,12 +148,86 @@ footer{
     color:#777;
 }
 
+/* RESPONSIVE */
+@media (max-width:1024px){
+    section{
+        padding:80px 8%;
+    }
+    .programs{
+        gap:30px;
+    }
+}
+
 @media(max-width:768px){
+    .hero{
+        height:auto;
+        padding:60px 5%;
+    }
     .hero h1{
         font-size:50px;
+        line-height:1.1;
     }
+    .hero p{
+        font-size:18px;
+        max-width:100%;
+    }
+
+    .stats{
+        flex-direction:column;
+        gap:30px;
+    }
+    .stat h2{
+        font-size:40px;
+    }
+    .stat p{
+        font-size:16px;
+    }
+
+    .programs{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+    .card{
+        padding:25px;
+    }
+
     .cta h2{
         font-size:32px;
+        margin-bottom:20px;
+    }
+    .btn{
+        width:100%;
+        max-width:300px;
+        padding:16px 0;
+    }
+
+    footer{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+    footer .social{
+        margin-top:15px;
+    }
+}
+
+@media (max-width:480px){
+    .hero h1{
+        font-size:36px;
+    }
+    .hero p{
+        font-size:16px;
+    }
+    .cta h2{
+        font-size:28px;
+    }
+    .btn{
+        max-width:100%;
+        font-size:16px;
+        padding:14px 0;
+    }
+    section{
+        padding:50px 5%;
     }
 }
 </style>
@@ -176,10 +237,8 @@ footer{
 <!-- HERO -->
 <section class="hero">
     <h1>BUILD<br><span class="neon">POWER</span></h1>
-    <p>Сучасна мережа фітнес-залів з персональними тренуваннями.
-    Результат. Дисципліна. Енергія.</p>
-    <a href="#" class="btn">Почати трансформацію
-</a>
+    <p>Сучасна мережа фітнес-залів з персональними тренуваннями. Результат. Дисципліна. Енергія.</p>
+    <a href="#" class="btn">Почати трансформацію</a>
 </section>
 
 <!-- STATS -->
@@ -203,7 +262,6 @@ footer{
 <!-- PROGRAMS -->
 <section>
     <h2 style="font-size:50px;margin-bottom:60px;">Наші <span class="neon">Програми</span></h2>
-
     <div class="programs">
         <div class="card">
             <h3>Персональні тренування</h3>
@@ -234,11 +292,10 @@ footer{
 <footer>
     <div>© 2025 POWERGYM</div>
     <div class="social">
-    <a href="#" target="_blank">Instagram</a>
-    <a href="#" target="_blank">TikTok</a>
-    <a href="#" target="_blank">Facebook</a>
-</div>
-
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">TikTok</a>
+        <a href="#" target="_blank">Facebook</a>
+    </div>
 </footer>
 
 </body>
