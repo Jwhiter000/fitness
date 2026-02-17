@@ -53,7 +53,6 @@ nav a:after {
 
 nav a:hover:after {width:100%;}
 
-
 /* MENU PANELS */
 .menu-panels {
   display:flex;
@@ -66,7 +65,7 @@ nav a:hover:after {width:100%;}
 .menu-panels::-webkit-scrollbar {display:none;}
 
 .panel {
-  flex:0 0 300px;
+  flex:0 0 320px;
   background:#1a1a2e;
   border-radius:25px;
   padding:30px;
@@ -89,10 +88,8 @@ nav a:hover:after {width:100%;}
 .panel h3 {color:#00ffcc; margin-bottom:10px; font-size:1.4em;}
 .panel p {color:#ccc; font-size:0.95em; line-height:1.4;}
 
-
 /* TESTIMONIALS */
 .testimonial-wrapper {
-  position:relative;
   padding:100px 0;
   overflow:hidden;
   background:linear-gradient(120deg,#1a1a2e,#0f0f1f);
@@ -115,20 +112,13 @@ nav a:hover:after {width:100%;}
 
 .testimonial .quote {
   font-style:italic;
-  font-size:1em;
   color:#00ffcc;
   margin-bottom:15px;
 }
 
-.testimonial .author {font-weight:700; color:#fff;}
+.testimonial .author {font-weight:700;}
 
-@keyframes scrollLeft {
-  0% {transform:translateX(0);}
-  100% {transform:translateX(-100%);}
-}
-
-
-/* CTA BLOCK */
+/* CTA */
 .cta-block {
   background:#00ffcc;
   color:#0f0f1f;
@@ -152,15 +142,12 @@ nav a:hover:after {width:100%;}
   border-radius:40px;
   text-decoration:none;
   transition:0.3s;
-  font-size:1.2em;
 }
 
 .cta-block a:hover {
-  background:#0f0f1f;
   transform:scale(1.05);
   box-shadow:0 0 25px #00ffcc;
 }
-
 
 /* FOOTER */
 footer{
@@ -180,21 +167,6 @@ footer .logo{
   color:#a0ff4d;
 }
 
-footer a{
-  color:#a0ff4d;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-footer a:hover{opacity:0.7;}
-
-footer .socials img{
-  width:24px;
-  height:24px;
-  object-fit:contain;
-  margin-left:10px;
-}
-
 footer .copyright{
   width:100%;
   text-align:center;
@@ -203,18 +175,26 @@ footer .copyright{
   color:#777;
 }
 
+/* ========================= */
+/* 🔥 TABLET FIX */
+/* ========================= */
+@media(max-width:1024px){
 
-/* 🔥 MOBILE ADAPTATION */
+  .panel{
+    flex:0 0 70%;
+  }
+
+}
+
+/* ========================= */
+/* 🔥 PHONE FIX */
+/* ========================= */
 @media(max-width:768px){
 
   nav{
     padding:15px 20px;
     flex-direction:column;
     gap:10px;
-  }
-
-  nav .logo{
-    font-size:1.4em;
   }
 
   nav div{
@@ -224,40 +204,35 @@ footer .copyright{
     justify-content:center;
   }
 
-  nav a{
-    margin-left:0;
-    font-size:0.9em;
-  }
-
   .menu-panels{
+    flex-direction:column;
+    overflow-x:visible;
     padding:120px 20px 40px 20px;
   }
 
   .panel{
-    flex:0 0 85%;
+    flex:1 1 auto;
+    width:100%;
   }
 
-  .testimonial-wrapper{
-    padding:70px 0;
+  .testimonial-track{
+    animation:none;
+    flex-direction:column;
+    align-items:center;
   }
 
   .testimonial{
-    min-width:260px;
-    padding:20px;
+    min-width:auto;
+    width:90%;
   }
 
   .cta-block{
-    padding:60px 20px;
     clip-path:none;
+    padding:60px 20px;
   }
 
   .cta-block h2{
     font-size:2em;
-  }
-
-  .cta-block a{
-    padding:15px 35px;
-    font-size:1em;
   }
 
   footer{
@@ -265,10 +240,6 @@ footer .copyright{
     flex-direction:column;
     align-items:center;
     text-align:center;
-  }
-
-  footer .socials{
-    margin-top:10px;
   }
 
 }
@@ -325,10 +296,6 @@ footer .copyright{
       <p class="quote">"Найкраща їжа для молодіжних тусовок!"</p>
       <p class="author">— Марія С.</p>
     </div>
-    <div class="testimonial">
-      <p class="quote">"Свіжість і смак на висоті. Доставка за 20 хв!"</p>
-      <p class="author">— Іван Т.</p>
-    </div>
   </div>
 </section>
 
@@ -339,13 +306,6 @@ footer .copyright{
 
 <footer>
   <div class="logo">FoodPulse</div>
-
-  <div class="socials">
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
-    <a href="#"><img src="https://img.icons8.com/color/48/000000/viber.png" alt="Viber"></a>
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
-  </div>
-
   <div class="copyright">
     &copy; 2025 FoodPulse. Всі права захищені.
   </div>
