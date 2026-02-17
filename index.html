@@ -5,65 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glow Studio — Інтерактивна краса</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Montserrat',sans-serif;background:#0b0c10;color:#fff;overflow-x:hidden;scroll-behavior:smooth;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#0b0c10;
+  color:#fff;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
 
 /* NAVIGATION */
 nav{
-  position:fixed;top:0;width:100%;padding:20px 50px;
-  display:flex;justify-content:space-between;align-items:center;
-  z-index:1000;background:rgba(11,12,16,0.8);backdrop-filter:blur(8px);
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:20px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  background:rgba(11,12,16,0.8);
+  backdrop-filter:blur(8px);
 }
-nav .logo{font-family:'Orbitron',sans-serif;font-size:1.8em;color:#ff66cc;}
+
+nav .logo{
+  font-family:'Orbitron',sans-serif;
+  font-size:1.8em;
+  color:#ff66cc;
+}
+
 nav a{
-  color:#fff;text-decoration:none;margin-left:30px;font-weight:600;position:relative;
+  color:#fff;
+  text-decoration:none;
+  margin-left:30px;
+  font-weight:600;
+  position:relative;
 }
+
 nav a::after{
-  content:'';position:absolute;width:0;height:2px;background:#ff66cc;left:0;bottom:-4px;transition:0.3s;
+  content:'';
+  position:absolute;
+  width:0;
+  height:2px;
+  background:#ff66cc;
+  left:0;
+  bottom:-4px;
+  transition:0.3s;
 }
+
 nav a:hover::after{width:100%;}
 
-/* FULLSCREEN SECTIONS */
-.section {
-  height: auto; /* вместо 100vh */
-  min-height: 100vh; /* если нужно чтобы интро занимало экран */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 10%; /* можно сверху/снизу увеличить */
-  text-align: center;
+
+/* SECTIONS */
+.section{
+  height:auto;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:80px 10%;
+  text-align:center;
+  position:relative;
 }
 
 .section h1{
-  font-family:'Orbitron',sans-serif;font-size:4em;margin-bottom:20px;color:#ff66cc;
+  font-family:'Orbitron',sans-serif;
+  font-size:4em;
+  margin-bottom:20px;
+  color:#ff66cc;
 }
+
 .section p{
-  font-size:1.2em;color:#ccc;max-width:700px;margin-bottom:30px;
+  font-size:1.2em;
+  color:#ccc;
+  max-width:700px;
+  margin-bottom:30px;
   line-height:1.5;
 }
 
-/* DYNAMIC BACKGROUNDS */
-#intro{background:linear-gradient(120deg,#0b0c10,#2b0a2f);}
-#services {
-  background: linear-gradient(260deg, #3f0f3f, #0b0c10);
-  justify-content: flex-start; /* блоки сверху */
-  scroll-margin-top: 80px;     /* nav высотой 80px */
+/* BACKGROUNDS */
+#intro{
+  background:linear-gradient(120deg,#0b0c10,#2b0a2f);
 }
 
+#services{
+  background:linear-gradient(260deg,#3f0f3f,#0b0c10);
+  justify-content:flex-start;
+  scroll-margin-top:80px;
+}
 
+#contact{
+  background:linear-gradient(90deg,#3f0f3f,#0b0c10);
+  min-height:50vh;
+  padding:60px 10%;
+}
 
-/* INTERACTIVE HOVER EFFECTS */
+/* HOVER TITLE */
 .section h1 span{
-  display:inline-block;transition:transform 0.3s;
+  display:inline-block;
+  transition:0.3s;
 }
-.section h1 span:hover{transform:scale(1.2) rotate(-5deg);color:#ffccff;}
+
+.section h1 span:hover{
+  transform:scale(1.2) rotate(-5deg);
+  color:#ffccff;
+}
 
 /* SCROLL INDICATOR */
 .scroll-down{
-  position:absolute;bottom:20px;font-size:0.9em;color:#ff66cc;animation:updown 1.5s infinite;
+  position:absolute;
+  bottom:20px;
+  font-size:0.9em;
+  color:#ff66cc;
+  animation:updown 1.5s infinite;
 }
+
 @keyframes updown{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(10px);}
@@ -73,57 +132,139 @@ nav a:hover::after{width:100%;}
 .services-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:40px;margin-top:40px;
+  gap:40px;
+  margin-top:40px;
 }
+
 .service-card{
   background:rgba(255,102,204,0.1);
   backdrop-filter:blur(10px);
-  padding:30px;border-radius:20px;transition:transform 0.3s;
+  padding:30px;
+  border-radius:20px;
+  transition:0.3s;
 }
-.service-card:hover{transform:scale(1.05);}
-.service-card h3{color:#ff66cc;margin-bottom:15px;font-size:1.3em;}
-.service-card p{color:#ccc;font-size:0.95em;line-height:1.4;}
 
-/* FOOTER MINIMAL */
-footer{
-  padding:40px 50px;text-align:center;font-size:0.9em;color:#777;background:#0b0c10;
+.service-card:hover{
+  transform:scale(1.05);
 }
-footer a{color:#ff66cc;text-decoration:none;transition:0.3s;}
+
+.service-card h3{
+  color:#ff66cc;
+  margin-bottom:15px;
+  font-size:1.3em;
+}
+
+.service-card p{
+  color:#ccc;
+  font-size:0.95em;
+  line-height:1.4;
+}
+
+/* CTA */
+.section a.cta{
+  padding:18px 50px;
+  background:#ff66cc;
+  color:#fff;
+  font-weight:700;
+  border-radius:35px;
+  text-decoration:none;
+  transition:0.3s;
+  margin-top:15px;
+}
+
+.section a.cta:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px #ff66cc;
+}
+
+/* FOOTER */
+footer{
+  padding:40px 50px;
+  text-align:center;
+  font-size:0.9em;
+  color:#777;
+  background:#0b0c10;
+}
+
+footer a{
+  color:#ff66cc;
+  text-decoration:none;
+  transition:0.3s;
+}
+
 footer a:hover{opacity:0.7;}
 
-/* RESPONSIVE */
+
+/* 🔥 MOBILE ADAPTATION */
 @media(max-width:768px){
-  .section h1{font-size:2.5em;}
-  .services-grid{gap:20px;}
+
+  nav{
+    padding:15px 20px;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  nav .logo{
+    font-size:1.4em;
+  }
+
+  nav div{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  nav a{
+    margin-left:0;
+    font-size:0.9em;
+  }
+
+  .section{
+    padding:100px 20px 60px 20px;
+    min-height:auto;
+  }
+
+  .section h1{
+    font-size:2.2em;
+    line-height:1.2;
+  }
+
+  .section p{
+    font-size:1em;
+  }
+
+  .services-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .service-card{
+    padding:20px;
+  }
+
+  .section a.cta{
+    padding:14px 30px;
+    font-size:0.9em;
+  }
+
+  footer{
+    padding:25px 20px;
+  }
+
+  .scroll-down{
+    display:none;
+  }
+
 }
 
-/* CTA INLINE */
-.section a.cta{
-  padding:18px 50px;background:#ff66cc;color:#fff;font-weight:700;border-radius:35px;text-decoration:none;
-  transition:0.3s;margin-top:15px;
-}
-.section a.cta:hover{transform:scale(1.05);box-shadow:0 0 20px #ff66cc;}
-
-/* Для контактной секции */
-#contact {
-  background:linear-gradient(90deg,#3f0f3f,#0b0c10);
-  height: auto; /* по содержимому */
-  min-height: 50vh; /* минимум 50% экрана, можно менять */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  flex-direction:column;
-  padding:60px 10%; /* уменьшаем padding сверху/снизу */
-}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">Glow Studio</div>
-   <div>
+  <div>
     <a href="#intro">Про нас</a>
     <a href="#services">Послуги</a>
     <a href="#experience">Відгуки</a>
@@ -131,14 +272,12 @@ footer a:hover{opacity:0.7;}
   </div>
 </nav>
 
-<!-- INTRO -->
 <section id="intro" class="section">
   <h1>Краса <span>в Дії</span></h1>
   <p>Glow Studio — преміальний салон краси для молоді та сімей. Вишуканий стиль, професіоналізм і індивідуальний підхід у кожній процедурі.</p>
   <div class="scroll-down">Скрольте вниз ↓</div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="section">
   <h1>Наші <span>Послуги</span></h1>
   <p>Від манікюру та педикюру до спа-процедур і професійного макіяжу — ми створюємо ваш ідеальний образ.</p>
@@ -162,14 +301,12 @@ footer a:hover{opacity:0.7;}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section">
   <h1>Зв’язатися з нами</h1>
   <p>Напишіть або зателефонуйте, щоб забронювати візит і отримати персональну консультацію.</p>
   <a href="mailto:info@glowstudio.ua" class="cta">Написати нам</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
   &copy; 2025 Glow Studio | <a href="#">Політика конфіденційності</a>
 </footer>
