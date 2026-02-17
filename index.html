@@ -3,312 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glow Studio — Інтерактивна краса</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
+<title>FoodPulse — Доставка Екстрім Смаку</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Montserrat',sans-serif;
-  background:#0b0c10;
-  color:#fff;
-  overflow-x:hidden;
-  scroll-behavior:smooth;
-}
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat', sans-serif;}
+body {background:#0f0f1f; color:#fff; overflow-x:hidden;}
 
 /* NAVIGATION */
-nav{
+nav {
   position:fixed;
-  top:0;
   width:100%;
+  top:0;
+  left:0;
   padding:20px 50px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  background:rgba(15,15,31,0.85);
+  backdrop-filter:blur(10px);
   z-index:1000;
-  background:rgba(11,12,16,0.8);
-  backdrop-filter:blur(8px);
 }
-
-nav .logo{
-  font-family:'Orbitron',sans-serif;
+nav .logo {
+  font-family:'Orbitron', sans-serif;
   font-size:1.8em;
-  color:#ff66cc;
+  color:#00ffcc;
+  letter-spacing:2px;
 }
-
-nav a{
+nav a {
   color:#fff;
   text-decoration:none;
   margin-left:30px;
   font-weight:600;
   position:relative;
 }
-
-nav a::after{
-  content:'';
-  position:absolute;
-  width:0;
-  height:2px;
-  background:#ff66cc;
-  left:0;
-  bottom:-4px;
-  transition:0.3s;
+nav a:after {
+  content:''; position:absolute; width:0; height:2px; background:#00ffcc; left:0; bottom:-5px; transition:0.3s;
 }
+nav a:hover:after {width:100%;}
 
-nav a:hover::after{width:100%;}
-
-
-/* SECTIONS */
-.section{
-  height:auto;
-  min-height:100vh;
+/* INTERACTIVE MENU PANELS */
+.menu-panels {
   display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:80px 10%;
-  text-align:center;
+  overflow-x:auto;
+  gap:20px;
+  padding:120px 50px 60px 50px;
+  scroll-snap-type:x mandatory;
+}
+.menu-panels::-webkit-scrollbar {display:none;}
+.panel {
+  flex:0 0 300px;
+  background:#1a1a2e;
+  border-radius:25px;
+  padding:30px;
+  scroll-snap-align:start;
+  transition:transform 0.4s, box-shadow 0.4s;
+  cursor:pointer;
   position:relative;
 }
-
-.section h1{
-  font-family:'Orbitron',sans-serif;
-  font-size:4em;
-  margin-bottom:20px;
-  color:#ff66cc;
+.panel:hover {
+  transform:scale(1.05) rotate(-1deg);
+  box-shadow:0 20px 40px rgba(0,255,204,0.4);
 }
-
-.section p{
-  font-size:1.2em;
-  color:#ccc;
-  max-width:700px;
-  margin-bottom:30px;
-  line-height:1.5;
-}
-
-/* BACKGROUNDS */
-#intro{
-  background:linear-gradient(120deg,#0b0c10,#2b0a2f);
-}
-
-#services{
-  background:linear-gradient(260deg,#3f0f3f,#0b0c10);
-  justify-content:flex-start;
-  scroll-margin-top:80px;
-}
-
-#contact{
-  background:linear-gradient(90deg,#3f0f3f,#0b0c10);
-  min-height:50vh;
-  padding:60px 10%;
-}
-
-/* HOVER TITLE */
-.section h1 span{
-  display:inline-block;
-  transition:0.3s;
-}
-
-.section h1 span:hover{
-  transform:scale(1.2) rotate(-5deg);
-  color:#ffccff;
-}
-
-/* SCROLL INDICATOR */
-.scroll-down{
-  position:absolute;
-  bottom:20px;
-  font-size:0.9em;
-  color:#ff66cc;
-  animation:updown 1.5s infinite;
-}
-
-@keyframes updown{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(10px);}
-}
-
-/* SERVICES GRID */
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:40px;
-  margin-top:40px;
-}
-
-.service-card{
-  background:rgba(255,102,204,0.1);
-  backdrop-filter:blur(10px);
-  padding:30px;
-  border-radius:20px;
-  transition:0.3s;
-}
-
-.service-card:hover{
-  transform:scale(1.05);
-}
-
-.service-card h3{
-  color:#ff66cc;
+.panel img {
+  width:100%;
+  border-radius:15px;
   margin-bottom:15px;
-  font-size:1.3em;
+}
+.panel h3 {color:#00ffcc; margin-bottom:10px; font-size:1.4em;}
+.panel p {color:#ccc; font-size:0.95em; line-height:1.4;}
+
+/* SCROLLING TESTIMONIALS */
+.testimonial-wrapper {
+  position:relative;
+  padding:100px 0;
+  overflow:hidden;
+  background:linear-gradient(120deg,#1a1a2e,#0f0f1f);
+}
+.testimonial-track {
+  display:flex;
+  gap:50px;
+  animation:scrollLeft 20s linear infinite;
+}
+.testimonial {
+  min-width:300px;
+  padding:30px;
+  background:#11112b;
+  border-radius:20px;
+  text-align:center;
+  flex-shrink:0;
+}
+.testimonial .quote {
+  font-style:italic;
+  font-size:1em;
+  color:#00ffcc;
+  margin-bottom:15px;
+}
+.testimonial .author {font-weight:700; color:#fff;}
+@keyframes scrollLeft {
+  0% {transform:translateX(0);}
+  100% {transform:translateX(-100%);}
 }
 
-.service-card p{
-  color:#ccc;
-  font-size:0.95em;
-  line-height:1.4;
+/* CTA BLOCK */
+.cta-block {
+  background:#00ffcc;
+  color:#0f0f1f;
+  padding:80px 50px;
+  text-align:center;
+  clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
 }
-
-/* CTA */
-.section a.cta{
-  padding:18px 50px;
-  background:#ff66cc;
-  color:#fff;
+.cta-block h2 {font-size:3em; margin-bottom:30px; font-family:'Orbitron', sans-serif;}
+.cta-block a {
+  display:inline-block;
+  padding:20px 60px;
+  background:#1a1a2e;
+  color:#00ffcc;
   font-weight:700;
-  border-radius:35px;
+  border-radius:40px;
   text-decoration:none;
   transition:0.3s;
-  margin-top:15px;
+  font-size:1.2em;
 }
-
-.section a.cta:hover{
+.cta-block a:hover {
+  background:#0f0f1f;
   transform:scale(1.05);
-  box-shadow:0 0 20px #ff66cc;
+  box-shadow:0 0 25px #00ffcc;
 }
 
 /* FOOTER */
 footer{
-  padding:40px 50px;
-  text-align:center;
-  font-size:0.9em;
-  color:#777;
-  background:#0b0c10;
+  background:#0d1b2a;
+  padding:30px 50px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  font-size:14px;
+  color:#ccc;
 }
-
-footer a{
-  color:#ff66cc;
-  text-decoration:none;
-  transition:0.3s;
-}
-
+footer .logo{font-family:'Orbitron',sans-serif;font-size:1.5em;color:#a0ff4d;}
+footer a{color:#a0ff4d;text-decoration:none;transition:0.3s;}
 footer a:hover{opacity:0.7;}
+footer .socials img{width:24px;height:24px;object-fit:contain;margin-left:10px;}
+footer .copyright{width:100%;text-align:center;margin-top:15px;font-size:0.8em;color:#777;}
 
-
-/* 🔥 MOBILE ADAPTATION */
+/* RESPONSIVE */
 @media(max-width:768px){
-
-  nav{
-    padding:15px 20px;
-    flex-direction:column;
-    gap:10px;
-  }
-
-  nav .logo{
-    font-size:1.4em;
-  }
-
-  nav div{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  nav a{
-    margin-left:0;
-    font-size:0.9em;
-  }
-
-  .section{
-    padding:100px 20px 60px 20px;
-    min-height:auto;
-  }
-
-  .section h1{
-    font-size:2.2em;
-    line-height:1.2;
-  }
-
-  .section p{
-    font-size:1em;
-  }
-
-  .services-grid{
-    grid-template-columns:1fr;
-    gap:20px;
-  }
-
-  .service-card{
-    padding:20px;
-  }
-
-  .section a.cta{
-    padding:14px 30px;
-    font-size:0.9em;
-  }
-
-  footer{
-    padding:25px 20px;
-  }
-
-  .scroll-down{
-    display:none;
-  }
-
+  nav{padding:15px 20px;}
+  section{padding:80px 5%;}
+  .cta-block h2{font-size:2em;}
+  .menu-section{grid-template-columns:1fr;}
 }
-
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">Glow Studio</div>
+  <div class="logo">FoodPulse</div>
   <div>
-    <a href="#intro">Про нас</a>
-    <a href="#services">Послуги</a>
-    <a href="#experience">Відгуки</a>
-    <a href="#contact">Контакти</a>
+    <a href="#menu">Меню</a>
+    <a href="#testimonials">Відгуки</a>
+    <a href="#order">Контакти</a>
   </div>
 </nav>
 
-<section id="intro" class="section">
-  <h1>Краса <span>в Дії</span></h1>
-  <p>Glow Studio — преміальний салон краси для молоді та сімей. Вишуканий стиль, професіоналізм і індивідуальний підхід у кожній процедурі.</p>
-  <div class="scroll-down">Скрольте вниз ↓</div>
+<!-- INTERACTIVE MENU PANELS -->
+<section class="menu-panels" id="menu">
+  <div class="panel">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=781&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pizza">
+    <h3>Піца XXL</h3>
+    <p>Гаряча, соковита, з натуральними інгредієнтами та італійським шармом.</p>
+  </div>
+  <div class="panel">
+    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Burger">
+    <h3>Бургер BBQ</h3>
+    <p>Соковите м'ясо, сир чеддер, свіжі овочі та соус BBQ.</p>
+  </div>
+  <div class="panel">
+    <img src="https://chizpizza.kh.ua/wp-content/uploads/2023/04/salat-czezar-z-kurkoyu.jpg" alt="Salad">
+    <h3>Салат Цезар</h3>
+    <p>Свіжі листя салату, курка, пармезан та соус Цезар.</p>
+  </div>
+  <div class="panel">
+    <img src="https://images.unsplash.com/photo-1563612116625-3012372fccce?q=80&w=741&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sushi">
+    <h3>Суші Сет</h3>
+    <p>Асорті свіжих суші з лососем та авокадо.</p>
+  </div>
 </section>
 
-<section id="services" class="section">
-  <h1>Наші <span>Послуги</span></h1>
-  <p>Від манікюру та педикюру до спа-процедур і професійного макіяжу — ми створюємо ваш ідеальний образ.</p>
-  <div class="services-grid">
-    <div class="service-card">
-      <h3>Манікюр & Педикюр</h3>
-      <p>Деталі, стиль та довготривалий результат для вашого комфорту.</p>
+<!-- SCROLLING TESTIMONIALS -->
+<section class="testimonial-wrapper" id="testimonials">
+  <div class="testimonial-track">
+    <div class="testimonial">
+      <p class="quote">"Замовляю щотижня — швидко та смачно!"</p>
+      <p class="author">— Олена П.</p>
     </div>
-    <div class="service-card">
-      <h3>Спа-процедури</h3>
-      <p>Релакс, відновлення та енергія в кожній процедурі.</p>
+    <div class="testimonial">
+      <p class="quote">"Сім'я в захваті від доставки! Рекомендую всім."</p>
+      <p class="author">— Андрій К.</p>
     </div>
-    <div class="service-card">
-      <h3>Макіяж</h3>
-      <p>Вишуканий образ для подій будь-якого масштабу та настрою.</p>
+    <div class="testimonial">
+      <p class="quote">"Найкраща їжа для молодіжних тусовок!"</p>
+      <p class="author">— Марія С.</p>
     </div>
-    <div class="service-card">
-      <h3>Індивідуальні консультації</h3>
-      <p>Наші фахівці підберуть персональний догляд та стиль для вас.</p>
+    <div class="testimonial">
+      <p class="quote">"Свіжість і смак на висоті. Доставка за 20 хв!"</p>
+      <p class="author">— Іван Т.</p>
     </div>
   </div>
 </section>
 
-<section id="contact" class="section">
-  <h1>Зв’язатися з нами</h1>
-  <p>Напишіть або зателефонуйте, щоб забронювати візит і отримати персональну консультацію.</p>
-  <a href="mailto:info@glowstudio.ua" class="cta">Написати нам</a>
+<!-- CTA BLOCK -->
+<section class="cta-block" id="order">
+  <h2>Спробуй смак вже сьогодні</h2>
+  <a href="#">Замовити зараз</a>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  &copy; 2025 Glow Studio | <a href="#">Політика конфіденційності</a>
+  <div class="logo">FoodPulse</div>
+  <div class="socials">
+    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+    <a href="#"><img src="https://img.icons8.com/color/48/000000/viber.png" alt="Viber"></a>
+    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+  </div>
+  <div class="copyright">&copy; 2025 FoodPulse. Всі права захищені.</div>
 </footer>
 
 </body>
